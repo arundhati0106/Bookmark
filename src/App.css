@@ -83,6 +83,20 @@ img {
   height: 400px;
 }
 
+/* edit delete icons */
+.book-header {
+  position: relative;
+  display: flex;
+}
+
+.icon-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  color: red;
+}
+
 /* Each book container within the row */
 .book {
   flex: 0 0 33.33%; /* Equal width for each column */
@@ -94,7 +108,10 @@ img {
 }
 
 button {
+  display: inline-block;
   margin-top: 10px;
+  margin-right: 5px; 
+
   width: 300px;
   padding: 10px;
   background-color: white;
@@ -149,4 +166,9 @@ button {
   background-color: rgba(13, 39, 157, 0.933);
   color: white;
   margin-bottom: 5px;
+}
+
+.add-book {
+  background-color: red; /* Set the background color to red */
+  color: white; /* Set the text color to white */
 }
