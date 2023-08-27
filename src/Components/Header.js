@@ -1,14 +1,19 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
 const Header = () => {
   return (
     <div className='header'>
       <div>
-        <img className='logo' src="/logo.png" alt="Books App Logo" />
+        <Link to="/">
+          <img className='logo' src="/logo.png" alt="Books App Logo" />
+        </Link>
       </div>
       
       <div>
-        <button className='fav_header'> Favourites </button>
+        <Link to='/favourites'>
+          <button className='fav_header'> Favourites </button>
+        </Link>
       </div>
 </div>
   )

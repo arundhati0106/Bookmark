@@ -1,41 +1,46 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 import { API_URL } from '../API';
 import { useAppContext } from '../Context/appContext';
+import mockBooksData from './mockBooksData';
 
 const BookList = () => {
     const [books, setBooks] = useState([]);
-
     //extract these values from context
     const { favourites, addToFavourites, removeFromFavourites } = useAppContext();
-
-    console.log('favourites are', favourites);
+    const navigate = useNavigate();
 
     const favouritesChecker = (id) => {
-        const boolean = favourites.some((book) => book.id === id);
-        return boolean;
+        return favourites.some((book) => book.id === id);
     }
 
     useEffect(() => {
-        console.log('API_URL:', API_URL);
         axios
         .get(API_URL)
         .then(res=> {
-            console.log(res.data)
-            setBooks(res.data)
+          setBooks(res.data)
         })
         .catch(err => console.log(err))
     }, [])
 
-    console.log('Books:', books);
+    // Combine API books and mock books
+    const combinedBooks = [...mockBooksData, ...books];
 
     return (
         <div className='book-list'>
-          {books.map((book) => (
+          {combinedBooks.map((book) => (
             <div className='book' key={book.id}> 
               <div> <h3>{book.title}</h3> </div>
-              <div> <img src={book.image_url} alt="#" /> </div>
+              <div> 
+                <img 
+                  src={book.image_url} 
+                  alt="#" 
+                  onClick = {() => navigate(`/book/${book.id}`)}
+                /> 
+              </div>
+
               <div> 
                 {/* if book is already inside favourites array, remove it */}
                 { favouritesChecker(book.id) 

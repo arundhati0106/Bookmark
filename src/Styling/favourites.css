@@ -1,0 +1,15 @@
+
+.favourites{
+    /* background-color: black; */
+    /* border: 20px solid red; */
+    padding-top: 18vh; 
+    padding-bottom: 8vh; 
+    min-height: 83vh;
+    width: 100%;
+    display: flex; 
+    align-items: center; 
+    overflow-x: auto; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+  }
+  

@@ -27,6 +27,7 @@
   color: white;
   margin-right: 15px;
   margin-bottom: 10px;
+  width: auto;
   /* border: 4px solid #0a0962d6; */
 }
 
@@ -60,15 +61,15 @@
 } */
 
 .book-list {
-  padding-top: 15vh; /* Adjust this value to account for header height */
-  padding-bottom: 8vh; /* Adjust this value to account for footer height */
+  padding-top: 15vh; 
+  padding-bottom: 8vh; 
   min-height: 83vh;
   width: 100%;
-  display: flex; /* Use flex to create a single row layout */
-  align-items: center; /* Vertically center-align content */
-  overflow-x: auto; /* Enable horizontal scrolling */
-  scrollbar-width: none; /* Hide the scrollbar for a cleaner look */
-  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+  display: flex; 
+  align-items: center; 
+  overflow-x: auto; 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
 /* Hide the scrollbar for Webkit browsers */
@@ -94,11 +95,58 @@ img {
 
 button {
   margin-top: 10px;
+  width: 300px;
   padding: 10px;
-  background: #fafbfcdd;
+  background-color: white;
   border: 3px solid #0a0962d6;
   border-radius: 10px;
   cursor: pointer;
 }
 
+/* BookDetails.css */
+.book-details-container {
+  margin-top: 10%;
+}
 
+.book-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto; /* Enable vertical scrollbar if content overflows */
+  height: calc(100vh - 120px); /* Adjust the height to leave space for header and footer */
+}
+
+.title {
+  font-size: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.image-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.details {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.details p{
+  font-family: 'Times New Roman';
+  font-size: 16px;
+  padding-bottom: 30px;
+
+}
+
+.details h2 {
+  background-color: rgba(13, 39, 157, 0.933);
+  color: white;
+  margin-bottom: 5px;
+}
