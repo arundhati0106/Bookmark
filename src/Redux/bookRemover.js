@@ -9,7 +9,18 @@ const bookReducer = (state = initialState, action) => {
                 ...state,
                 books: state.books.filter(book => book.id !== action.payload),
             };
-      
+
+        case 'UPDATE_BOOK_DETAILS':
+            return {
+                ...state,
+                books: state.books.map(book => {
+                    if (book.id === action.payload.id) {
+                        return action.payload;
+                    }
+                    return book;
+                }),
+            };
+    
         default:
             return state;
     }

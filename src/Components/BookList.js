@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
-import { FaTrash, FaEdit } from 'react-icons/fa'; // Import icons
+import { FaTrash } from 'react-icons/fa'; // Import icons
 import {connect} from 'react-redux';
 
 import { API_URL } from '../API';
@@ -39,16 +39,16 @@ const BookList = ({ books: reduxBooks }) => {
     const handleAddBook = () => {
     };
   
-    const handleUpdateBook = (bookId) => {
-    };
-  
     const handleDeleteBook = (bookId) => {
-      console.log("handleDeleteBook called with bookId:", bookId);
-      dispatch(deleteBookAction(bookId));
-      setDeletedBookIds(prevDeletedIds => [...prevDeletedIds, bookId]);
-  };
-
-  const combinedBooks = [...books, ...mockBooksData]
+      const confirmDelete = window.confirm("Are you sure you want to delete this book?");
+      if (confirmDelete) {
+        console.log("handleDeleteBook called with bookId:", bookId);
+        dispatch(deleteBookAction(bookId));
+        setDeletedBookIds((prevDeletedIds) => [...prevDeletedIds, bookId]);
+      }
+    };
+ 
+    const combinedBooks = [...books, ...mockBooksData]
       .filter(book => !deletedBookIds.includes(book.id));
 
     return (
@@ -57,14 +57,9 @@ const BookList = ({ books: reduxBooks }) => {
           <div className='book' key={book.id}>
             <div className='book-header'>
               {!books.some((apiBook) => apiBook.id === book.id) && ( // Check if the book is not from API
-                <>
-                  <button className='icon-button' onClick={() => handleDeleteBook(book.id)}>
-                    <FaTrash />
-                  </button>
-                  <button className='icon-button' onClick={() => handleUpdateBook(book.id)}>
-                    <FaEdit />
-                  </button>
-                </>
+                <button className='icon-button' onClick={() => handleDeleteBook(book.id)}>
+                  <FaTrash />
+                </button>
               )}
             </div>
             <div className='book-info'>
