@@ -1,26 +1,25 @@
-// index.js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom';
 import AppContextProvider from './Context/appContext';
-import { Provider } from 'react-redux'; // Import Redux Provider
-import store from './Redux/store'; // Import your Redux store from the correct path
+import { Provider } from 'react-redux';
+import store from './Redux/store';
 
-ReactDOM.render(
+// Use createRoot instead of ReactDOM.render
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <AppContextProvider>
-        <Provider store={store}> {/* Wrap with Redux Provider */}
+        <Provider store={store}>
           <App />
         </Provider>
       </AppContextProvider>
     </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
 reportWebVitals();

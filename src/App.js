@@ -7,6 +7,7 @@ import Header from './Components/Header';
 import BookList from './Components/BookList';
 import Favourites from './Components/Favourites';
 import BookDetails from './Components/BookDetails';
+import AddBookModal from './Components/AddBookModal';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<BookList />} />
         <Route path="/book/:id" element={<BookDetails />} />
         <Route path="/favourites" element={<Favourites />} />
+        <Route path="/add-book" element={<AddBookModal />} />
       </Routes>
       
       <Footer />      

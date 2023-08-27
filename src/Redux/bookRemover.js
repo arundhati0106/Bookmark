@@ -20,6 +20,12 @@ const bookReducer = (state = initialState, action) => {
                     return book;
                 }),
             };
+
+        case 'ADD_BOOK':
+            return {
+                ...state,
+                books: [...state.books, action.payload],
+            };
     
         default:
             return state;

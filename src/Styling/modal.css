@@ -1,0 +1,74 @@
+/* Styles for the modal overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it's on top of everything */
+  }
+  
+  /* Styles for the modal content */
+  .modal-content {
+    border: 3px solid rgba(13, 39, 157, 0.933);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    height: 55%;
+    text-align: center; /* Center-align all content */
+  }
+  
+  /* Style for the modal title */
+  .modal-content h2 {
+    color: rgba(13, 39, 157, 0.933);
+    
+    margin-top: 0; /* Remove default margin */
+    margin-bottom: 16px; /* Add some space below the title */
+  }
+  
+  /* Style for the text inputs */
+    .modal-content input[type="text"],
+    .modal-content textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+  /* Style for the save button */
+  .modal-buttons button {
+    width: auto;
+    font-size:16px;
+    
+    border: rgba(13, 39, 157, 0.933) 3px solid;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+
+/* 
+  "id": 20,
+    "title": "Divergent",
+    "authors": "Veronica Roth",
+    "description": "In Beatrice Prior's dystopian Chicago world, society is divided into five factions, each dedicated to the cultivation of a particular virtue—Candor (the honest), Abnegation (the selfless), Dauntless (the brave), Amity (the peaceful), and Erudite (the intelligent). On an appointed day of every year, all sixteen-year-olds must select the faction to which they will devote the rest of their lives. For Beatrice, the decision is between staying with her family and being who she really is—she can't have both. So she makes a choice that surprises everyone, including herself.During the highly competitive initiation that follows, Beatrice renames herself Tris and struggles alongside her fellow initiates to live out the choice they have made. Together they must undergo extreme physical tests of endurance and intense psychological simulations, some with devastating consequences. As initiation transforms them all, Tris must determine who her friends really are—and where, exactly, a romance with a sometimes fascinating, sometimes exasperating boy fits into the life she's chosen. But Tris also has a secret, one she's kept hidden from everyone because she's been warned it can mean death. And as she discovers unrest and growing conflict that threaten to unravel her seemingly perfect society, she also learns that her secret might help her save those she loves . . . or it might destroy her.",
+    "edition": "",
+    "format": "Paperback",
+    "num_pages": 487,
+    "rating": 4.22,
+    "rating_count": 2493519,
+    "review_count": 104329,
+    "genres": "Young Adult, Science Fiction, Dystopia, Fiction, Fantasy",
+    "genre_list": "Young Adult,Science Fiction,Dystopia,Fiction,Fantasy",
+    "image_url": "https://images.gr-assets.com/books/1328559506l/13335037.jpg",
+    "Quote1": "“I like the night. Without the dark, we'd never see the stars.”",
+    "Quote2": "“I decided as long as I'm going to hell, I might as well do it thoroughly.”",
+    "Quote3": "“When life offers you a dream so far beyond any of your expectations, it’s not reasonable to grieve when it comes to an end.”" */
