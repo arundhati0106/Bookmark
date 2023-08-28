@@ -14,15 +14,15 @@
 ![image](https://github.com/arundhati0106/Bookmark/assets/118017385/bee60965-5bd5-4072-b125-9d72dbda0848)
 
 - Favourites page-
-- ![image](https://github.com/arundhati0106/Bookmark/assets/118017385/d1fd41d4-427e-4f3f-839b-51f87b919322)
+![image](https://github.com/arundhati0106/Bookmark/assets/118017385/d1fd41d4-427e-4f3f-839b-51f87b919322)
 
-- ![image](https://github.com/arundhati0106/Bookmark/assets/118017385/1f55e01d-746d-49e2-bcf2-ab979b33fd23)
+![image](https://github.com/arundhati0106/Bookmark/assets/118017385/1f55e01d-746d-49e2-bcf2-ab979b33fd23)
 
 - Add Book Modal page
-- ![image](https://github.com/arundhati0106/Bookmark/assets/118017385/da16c2ad-76df-467e-964f-c45a8a936bac)
+![image](https://github.com/arundhati0106/Bookmark/assets/118017385/da16c2ad-76df-467e-964f-c45a8a936bac)
 
 - Book Description page-
-- https://github.com/arundhati0106/Bookmark/assets/118017385/a4a6a193-b7cc-4d33-8aaf-0225243c34ce
+https://github.com/arundhati0106/Bookmark/assets/118017385/a4a6a193-b7cc-4d33-8aaf-0225243c34ce
 
 - Entire project
 https://github.com/arundhati0106/Bookmark/assets/118017385/c935a071-ee7e-46ed-ae24-21fe73d9fa31
