@@ -54,6 +54,17 @@
     cursor: pointer;
   }
   
+  .close-button {
+    color: red;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 0;
+    width: auto;
+    height: auto;
+    margin-top: -20px;
+    margin-left: 330px;
+    border: none;
+  }
 
 /* 
   "id": 20,

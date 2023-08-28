@@ -27,12 +27,21 @@ const AddBookModal = ({ onClose, onAddBook }) => {
         setGenre('');
         setImageUrl('');
         navigate('/');
-    };    
+    };  
+    
+    const handleClose = () => {
+        onClose(); // Call the onClose prop to close the modal
+    };
 
     return (
         <div className='modal-overlay'>
             <div className='modal-content'>
+                <button className='close-button' onClick={handleClose}>
+                    &times; {/* Insert the "times" character for the cross icon */}
+                </button>
+
                 <h2>Add New Book</h2>
+                
                 <input
                     type='text'
                     placeholder='Title'
