@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { FaTrash } from 'react-icons/fa'; // Import icons
 import {connect} from 'react-redux';
 
@@ -43,22 +43,24 @@ const BookList = ({ books: reduxBooks }) => {
 
   const handleAddBook = async (newBook) => {
     console.log("Adding new book:", newBook);
-
+  
     if (newBook.title) {
-      await dispatch(addBookAction(newBook, books));
-      setIsModalOpen(false);
-
-      // Update the books state to include the new book
-      setBooks((prevBooks) => [...prevBooks, newBook]);
-
-      setNewBook({
-        title: '',
-        authors: '',
-        description: '',
-        genres: '',
-        image_url: '',
-      });
+      dispatch(addBookAction(newBook, books));
     }
+  
+    setIsModalOpen(false);
+  
+    // Add the new book to the combinedBooks array at the end
+    setBooks((prevBooks) => [...prevBooks, newBook]);
+  
+    // Reset the newBook state
+    setNewBook({
+      title: '',
+      authors: '',
+      description: '',
+      genres: '',
+      image_url: '',
+    });
   };
   
   const handleOpenModal = () => {
@@ -74,10 +76,21 @@ const BookList = ({ books: reduxBooks }) => {
     }
   };
 
-  
+  const handleBookClick = (book) => {
+    navigate(`/book/${book.id}`, {
+      state: {
+        newBook: combinedBooks.find(apiBook => apiBook.id === book.id)
+      }
+    });
+  };
+
   // Calculate the combinedBooks array
   const combinedBooks = [...books, ...mockBooksData]
-    .filter(book => !deletedBookIds.includes(book.id));
+  .filter((book) => !deletedBookIds.includes(book.id) && book.id !== 'new');
+
+  if (newBook.title) {
+    combinedBooks.push(newBook); // Add the new book at the end
+  }
 
   console.log("Updated books:", combinedBooks);
 
@@ -96,9 +109,12 @@ const BookList = ({ books: reduxBooks }) => {
             <div className='book-info'>
               <h3>{book.title}</h3>
               <img
-                src={book.image_url || book.image_url}
+                src={book.image_url}
                 alt="#"
-                onClick={() => navigate(`/book/${book.id}`)}
+                onClick={() => handleBookClick(book)}
+                onError={(e) => {
+                  e.target.src = 'placeholder-image-url.jpg'; // Replace with your placeholder image
+              }}
               />
             </div>
 
@@ -118,12 +134,15 @@ const BookList = ({ books: reduxBooks }) => {
           </div>
         ))}
 
-        {newBook.title || newBook.authors || newBook.description || newBook.genres || newBook.image_url 
-          ? ( <div className='book' key={newBook.id}>
+        { (newBook.title || newBook.authors || newBook.description || newBook.genres || newBook.image_url)
+          && !combinedBooks.some(book => book.id === 'new') 
+          ? (
+              <div className='book' key={Date.now()}> {/* Use a unique key */}
                 <div className='book-info'>
                   <h3>{newBook.title}</h3>
                   <img src={newBook.image_url} alt='#' />
                 </div>
+                {console.log('Rendering new book:', newBook)}
               </div>
             ) 
           : null
@@ -149,7 +168,6 @@ const BookList = ({ books: reduxBooks }) => {
               onClose={() => setIsModalOpen(false)}
               onAddBook={handleAddBook} // Pass the function to handle adding the book
           />
-      
         )}
       </div>
     );

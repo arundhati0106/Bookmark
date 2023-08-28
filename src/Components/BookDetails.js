@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
@@ -9,13 +9,17 @@ import { updateBookDetails } from '../Redux/actions'; // Import your update acti
 
 import { FaEdit, FaSave } from 'react-icons/fa'; // Import icons
 
-const BookDetails = () => {
+const BookDetails = ({books}) => {
     const [book, setBook] = useState({});
     const [isEditDescription, setIsEditDescription] = useState(false);
     const [isEditAuthor, setIsEditAuthor] = useState(false);
     const [isEditGenre, setIsEditGenre] = useState(false);
     const { id } = useParams();
     const dispatch = useDispatch();
+
+    //display details of new user added book
+    const location = useLocation();
+    const bookFromLocationState = location.state?.newBook;
 
     // Function to calculate text dimensions
     const getTextDimensions = (text) => {
@@ -51,24 +55,31 @@ const BookDetails = () => {
         setIsEditAuthor(false);
         setIsEditGenre(false);
     };
-    
-    useEffect(() => {
-        const mockBook = mockBooksData.find(item => item.id.toString() === id);
 
-        if (mockBook) {
-            setBook(mockBook);
+    useEffect(() => {
+        console.log("bookFromLocationState:", bookFromLocationState);
+
+        if (bookFromLocationState) {
+            setBook(bookFromLocationState);
         } 
         
         else {
-            axios
-            .get(`${BOOK_DETAILS_URL}/${id}`)
-            .then(res => {
-                setBook(res.data);
-            })
-            .catch(err => console.log(err));
+            const mockBook = mockBooksData.find(item => item.id.toString() === id);
+    
+            if (mockBook) {
+                setBook(mockBook);
+            } 
+            else {
+                axios
+                    .get(`${BOOK_DETAILS_URL}/${id}`)
+                    .then(res => {
+                        setBook(res.data);
+                    })
+                    .catch(err => console.log(err));
+            }
         }
-    }, [id]);
-
+    }, [bookFromLocationState, books, id]);
+    
     return (
         <div className='book-details-container'>
             <div className='book-details'>
@@ -77,7 +88,13 @@ const BookDetails = () => {
                 </div>
                 
                 <div className='image-container'>
-                    <img src={book?.image_url} alt="#" />
+                    <img
+                        src={book.image_url}
+                        alt={book.title}
+                        onError={(e) => {
+                        e.target.src = 'placeholder-image-url.jpg'; // Replace with your placeholder image
+                        }}
+                    />
                 </div>
 
                 <div className='details'>
